@@ -15,7 +15,8 @@
     "build-node": "babel src --out-dir dist",
     "build-web": "browserify src/cep-promise.js -s cep -o | uglifyjs > dist/cep-promise-browser.min.js",
     "build": "npm run build-node && npm run build-web",
-    "prepublish": "npm run build"
+    "prepublish": "npm run snyk-protect; npm run build",
+    "snyk-protect": "snyk protect"
   },
   "browserify": {
     "transform": [
@@ -73,6 +74,8 @@
   "dependencies": {
     "isomorphic-fetch": "2.2.1",
     "lodash.get": "4.4.2",
-    "xml2js": "0.4.17"
-  }
+    "xml2js": "0.4.17",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
